@@ -31,6 +31,10 @@ dashboardPage(
     
     #side bar
     dashboardSidebar(
+        sidebarUserPanel(image ="uefalogo.png",name = "" ),
+        
+        
+        
         
         sidebarMenu(
             menuItem("Summary", tabName = "map", icon = icon("map")),
