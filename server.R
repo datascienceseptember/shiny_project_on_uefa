@@ -34,16 +34,38 @@ shinyServer(function(input, output,session) {
     
 output$uefa <- renderPlot(
     
-    data %>% ggplot(aes(x = !!sym(input$teams), y = !!sym(input$actions)))
+    data%>%group_by(input$teams) %>% ggplot(aes(x = !!sym(input$teams), y = !!sym(input$actions)))
             + geom_bar(stat = "identity",fill=I("blue"),alpha = .2 ) 
             + theme(axis.text = element_text(size = 12))
             + guides(color = "none")
-            + ggtitle(str_to_upper(paste(input$teams,"VS ", input$actions)))
+            + ggtitle(str_to_upper(paste("TOTAL",input$actions," of",input$teams , "FOR THE SEASON")))
             + xlab(str_to_upper(input$teams)) 
             + ylab(str_to_upper(input$actions)) 
             + scale_fill_gradient("Count", low="green", high="red")
             
 )
+
+output$uefaav <- renderPlot(
+    
+    data%>%group_by(input$teams) %>% ggplot(aes(x = !!sym(input$teams), y = !!sym(input$actions)))
+    + geom_boxplot() 
+   
+    
+    
+)
+
+output$minBox <- renderInfoBox({
+    
+    total=nrow(unique(select(data,input$teams)))
+    infoBox(total, paste("Total of",input$teams), icon = icon("hand-o-down"))
+})
+
+output$maxgoal <- renderInfoBox({
+    
+    total=nrow(unique(select(data,input$teams)))
+    infoBox( paste("Total of",input$teams),total, icon = icon("hand-o-down"))
+})
+
 
     
     

@@ -56,24 +56,25 @@ dashboardPage(
     dashboardBody
     (
 
-       # start test
-        fluidRow(style='margin: 0px;',
-                 box(width='100%',
-                     infoBox("Total Home Team" ,"Screened", icon = icon('users'), width = 6),
-                     infoBox("Total Away Team" ,"Screened", icon = icon('male'), width = 
-                                 6),)),
+       
+        tabItems(
+            tabItem(tabName = "map",
+                    fluidRow(infoBoxOutput("maxgoal"),
+                             infoBoxOutput("minBox"),
+                             infoBoxOutput("avgBox")))),
+                    
         
-        
+    fluidRow(
+            column(12, plotOutput("uefa"))
+            ),
         
         fluidRow(
-            column(12, 
-                   plotOutput("uefa"))
-            
+            column(12, plotOutput("uefaav"))
         )
         
-        
-        #test
-    )
+        )
+    
+    
     
     #end of body
 )
