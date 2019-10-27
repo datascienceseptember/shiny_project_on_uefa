@@ -26,8 +26,8 @@ dashboardPage(
             
             
         
-            notificationItem("shinydashboard", icon = icon("users"),
-                             href = "https://rstudio.github.io/shinydashboard/")
+            notificationItem("check on github", icon = icon("users"),
+                             href = "https://github.com/datascienceseptember/shiny_project_on_uefa")
         )),
     
     #side bar
@@ -40,7 +40,7 @@ dashboardPage(
         sidebarMenu(
             menuItem("Data", tabName = "data", icon = icon("database")),
             hr(),
-            menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
+            menuItem("Get Summary", tabName = "dashboard", icon = icon("dashboard")),
             
             
             selectInput(inputId ="teams", 
@@ -98,3 +98,4 @@ dashboardPage(
     
     #end of body
 )
+
