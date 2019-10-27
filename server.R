@@ -36,6 +36,7 @@ output$uefa <- renderPlot(
     
     data%>%group_by(input$teams) %>% ggplot(aes(x = !!sym(input$teams), y = !!sym(input$actions)))
             + geom_bar(stat = "identity",fill=I("blue"),alpha = .2 ) 
+            + geom_line()
             + theme(axis.text = element_text(size = 12))
             + guides(color = "none")
             + ggtitle(str_to_upper(paste("TOTAL",input$actions," of",input$teams , "FOR THE SEASON")))
@@ -49,6 +50,8 @@ output$uefaav <- renderPlot(
     
     data%>%group_by(input$teams) %>% ggplot(aes(x = !!sym(input$teams), y = !!sym(input$actions)))
     + geom_boxplot() 
+    + theme(axis.text = element_text(size = 12))
+    + ggtitle(str_to_upper(paste("avarage",input$actions," of",input$teams , "FOR THE SEASON")))
    
     
     
@@ -64,6 +67,11 @@ output$maxgoal <- renderInfoBox({
     
     total=nrow(unique(select(data,input$teams)))
     infoBox( paste("Total of",input$teams),total, icon = icon("hand-o-down"))
+})
+
+output$table <- DT::renderDataTable({
+    datatable(data, rownames=FALSE, options = list(scrollX = TRUE)) %>% 
+        formatStyle(input$actions, background="skyblue", fontWeight='bold')
 })
 
 
