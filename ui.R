@@ -41,7 +41,7 @@ dashboardPage(
             menuItem("Data", tabName = "data", icon = icon("database")),
             hr(),
             menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
-            #menuItem("Summary", tabName = "map", icon = icon("map")),
+            
             
             selectInput(inputId ="teams", 
                         label = "Team:", 
