@@ -39,7 +39,7 @@ output$uefa <- renderPlot(
             + geom_line()
             + theme(axis.text = element_text(size = 12))
             + guides(color = "none")
-            + ggtitle(str_to_upper(paste("TOTAL",input$actions," of",input$teams , "FOR THE SEASON")))
+            + ggtitle(str_to_upper(paste("TOTAL",input$actions," of",input$teams , "FOR THE SEASON off 2017")))
             + xlab(str_to_upper(input$teams)) 
             + ylab(str_to_upper(input$actions)) 
             + scale_fill_gradient("Count", low="green", high="red")
@@ -51,7 +51,7 @@ output$uefaav <- renderPlot(
     data%>%group_by(input$teams) %>% ggplot(aes(x = !!sym(input$teams), y = !!sym(input$actions)))
     + geom_boxplot() 
     + theme(axis.text = element_text(size = 12))
-    + ggtitle(str_to_upper(paste("avarage",input$actions," of",input$teams , "FOR THE SEASON")))
+    + ggtitle(str_to_upper(paste("avarage",input$actions," of",input$teams , "FOR THE SEASON of 2017")))
    
     
     

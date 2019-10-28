@@ -40,7 +40,7 @@ dashboardPage(
         sidebarMenu(
             menuItem("Data", tabName = "data", icon = icon("database")),
             hr(),
-            menuItem("Get Summary", tabName = "dashboard", icon = icon("dashboard")),
+            menuItem("Get Summary", tabName = "dashboard", icon = icon("home")),
             
             
             selectInput(inputId ="teams", 
@@ -82,7 +82,7 @@ dashboardPage(
                     ),
                     
                     tabItem(tabName = "data",
-                            fluidRow(DT::dataTableOutput("table"), options = list(scrollX = TRUE))
+                            fluidRow(DT::dataTableOutput("table"))
                     )
                     
                     
